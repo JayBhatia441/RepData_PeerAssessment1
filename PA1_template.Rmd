@@ -19,7 +19,7 @@ activity<-tbl_df(activity)
 
 ## What is mean and median total number of steps taken per day?
 
-```{r QUESTION 1,echo=TRUE}
+```{r QUESTION1,echo=TRUE}
 a1<-group_by(activity,date)
 sum_steps<-summarize(a1,TotalSteps=sum(steps,na.rm = TRUE))
 sum_steps$date<-as.Date(sum_steps$date)
@@ -36,7 +36,7 @@ The median of total number of steps is **`r median`**
 
 ## What is the average daily activity pattern?
 
-```{r QUESTION 2,echo=TRUE}
+```{r QUESTION2,echo=TRUE}
 a1<-group_by(activity,interval)
 a1<-mutate(a1,AvgSteps=mean(steps,na.rm = TRUE))
 g<-ggplot(data=a1,aes(interval,AvgSteps))
@@ -51,12 +51,12 @@ The **`r max` minute interval** on average across all the days in the dataset, c
 ## Imputing missing values
 
 
-```{r QUESTION 3,echo=TRUE}
+```{r QUESTION3,echo=TRUE}
 sum<-sum(!complete.cases(a1$steps))
 ```
 The total number of rows with missing values is **`r sum`**
 
-```{r QUESTION 3B,echo=TRUE}
+```{r QUESTION3B,echo=TRUE}
 defaultW<-getOption("warn")
 options(warn=-1)
 
@@ -86,7 +86,7 @@ The values of mean and median differ from the first part of the assessment
 
 ## Are there differences in activity patterns between weekdays and weekends?
 
-```{r QUESTION 4,echo=TRUE}
+```{r QUESTION4,echo=TRUE}
   weekData<-mutate(finalData1,Week=1)
 weekData$Week<-sapply(weekData$date,function(x){
    if(weekdays(x)=="Saturday" | weekdays(x)=="Sunday")

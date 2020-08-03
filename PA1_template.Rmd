@@ -8,6 +8,9 @@ output: html_document
 # COURSE PROJECT
 
 
+# COURSE PROJECT
+
+
 ## Loading and preprocessing the data
 ```{r readingData,echo=TRUE,results="hide"}
 library(dplyr)
